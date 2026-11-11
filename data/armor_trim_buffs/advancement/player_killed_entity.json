@@ -1,0 +1,10 @@
+{
+  "criteria": {
+    "kill": {
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "rewards": {
+    "function": "armor_trim_buffs:events/player_killed_entity"
+  }
+}
