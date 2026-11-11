@@ -8,9 +8,3 @@ scoreboard objectives add atb_emerald dummy
 scoreboard objectives add atb_red dummy
 scoreboard objectives add atb_neth dummy
 tellraw @a [{"text":"[Armor Trim Buffs] ","color":"gold"},{"text":"Loaded for Java 26.3.","color":"green"}]
-scoreboard objectives add atb_hits dummy
-scoreboard objectives add atb_kills dummy
-scoreboard objectives add atb_sword_hits dummy
-scoreboard objectives add atb_axe_hits dummy
-scoreboard objectives add atb_mace_hits dummy
-scoreboard objectives add atb_trident_hits dummy
