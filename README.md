@@ -10,30 +10,33 @@ The number of equipped armor pieces with the same trim material selects one tier
 - 3 pieces = Tier 3
 - 4 pieces = Tier 4
 
-Each tier is the final value for that tier. For example, Tier 4 at 30% means exactly 30%, not the sum of Tiers 1–4.
+Each tier is the final value for that tier. For example, Tier 4 at 30% means exactly 30%, not the sum of Tiers 1–4. Different materials use independent modifiers and combine independently.
 
-Different trim materials use independent tier counters.
+## Current implementation
 
-## Beta status
+Implemented in the current scaffold:
+- Counts each of the nine requested trim materials across head, chest, legs, and feet.
+- Amethyst movement-speed tiers and Jump Boost at Tiers 1 and 4.
+- Diamond movement-speed tiers.
+- Lapis movement-speed tiers, including the higher values when the player is standing in water.
+- Iron movement-speed tiers.
+- Netherite Tier 4 movement speed.
+- Copper and Gold mining-speed tiers through the Java 26.3 block_break_speed attribute.
 
-This repository is an **in-progress beta scaffold**, not a finished release. The current implementation includes:
-- Trim-material counting across the four armor slots.
-- Initial movement-speed and jump-effect logic for selected materials.
-- Advancement event hooks for player-hit and player-kill events.
-- Per-player counters for hit events and weapon categories, intended for diagnostics.
+Not yet implemented:
+- Remaining defensive, health/absorption, and other passive effects.
+- Additional tool-related effects and combat-event effects.
+- Ancient City loot-table adjustment.
 
-The current movement implementation and event hooks still require in-game validation. The complete material effects, damage/healing calculations, mining bonuses, defensive bonuses, fractional absorption, weapon-specific effects, and Ancient City loot adjustment are not all implemented yet. Do not treat this commit as a complete implementation of the specification.
+## Important testing note
 
-## Testing the current event hooks
+This is an **in-progress beta**, not a finished or in-game-verified release. The repository changes have not been tested in a Minecraft 26.3 server/client. Attribute modifier behavior, armor trim item predicates, and effect interactions still need in-game validation.
 
-1. Put the datapack in `<world>/datapacks/`.
-2. Run `/reload`.
-3. Confirm it appears in `/datapack list`.
-4. After combat events, run `/function armor_trim_buffs:debug/status` to inspect the event counters.
+## Install
 
-If the pack reports errors during `/reload`, capture the full server log before testing further.
+1. Download the repository as a ZIP.
+2. Put the datapack folder in your world's datapacks folder.
+3. Run /reload.
+4. Check /datapack list and the server log for errors.
 
-## Version
-
-Targets Java 26.3. The official release notes list data pack version 121.0:
-https://www.minecraft.net/en-us/article/minecraft-java-edition-26-3
+Pack metadata targets Java 26.3 with data pack format 121.0.
