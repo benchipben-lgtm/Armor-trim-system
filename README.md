@@ -1,8 +1,6 @@
 # Armor Trim Buffs
 
-Minecraft Java Edition **26.3** datapack. Data pack format: **121.0**.
-
-This repository implements the non-combat passive portion of the trim system. Weapon-combat mechanics are not included.
+Minecraft Java Edition **26.3** datapack (data pack format **121.0**).
 
 ## Tier rule — absolute, not cumulative
 
@@ -12,29 +10,30 @@ The number of equipped armor pieces with the same trim material selects one tier
 - 3 pieces = Tier 3
 - 4 pieces = Tier 4
 
-**Each tier is the final value for that tier.** Tier 4 does not add Tier 1 + Tier 2 + Tier 3. For example, a Tier 4 speed bonus of 30% is exactly 30%, not 70%.
+Each tier is the final value for that tier. For example, Tier 4 at 30% means exactly 30%, not the sum of Tiers 1–4.
 
-Different materials have independent tier counters. Their active movement-speed modifiers multiply as separate attribute modifiers; they are not summed into a single percentage.
+Different trim materials use independent tier counters.
 
-## Implemented in this initial commit
+## Beta status
 
-- Detects trim materials on all four equipped armor slots.
-- Applies exact movement-speed percentages for Amethyst, Diamond, Lapis, Iron, and Netherite tiers.
-- Lapis uses its water-specific speed value while the player is in water.
-- Amethyst Tier 1 grants Jump Boost I; Tier 4 grants Jump Boost IV.
-- Modifiers are removed and re-applied from the currently selected tier, so old tier values do not accumulate.
+This repository is an **in-progress beta scaffold**, not a finished release. The current implementation includes:
+- Trim-material counting across the four armor slots.
+- Initial movement-speed and jump-effect logic for selected materials.
+- Advancement event hooks for player-hit and player-kill events.
+- Per-player counters for hit events and weapon categories, intended for diagnostics.
 
-## Not included
+The current movement implementation and event hooks still require in-game validation. The complete material effects, damage/healing calculations, mining bonuses, defensive bonuses, fractional absorption, weapon-specific effects, and Ancient City loot adjustment are not all implemented yet. Do not treat this commit as a complete implementation of the specification.
 
-This repository does not implement weapon-triggered combat, critical-hit, damage, or lifesteal mechanics. It also does not yet implement percentage-based mining speed, resistance percentages, or fractional absorption values; vanilla potion effects do not represent all of those percentages exactly, so they must not be substituted as if they did.
+## Testing the current event hooks
 
-## Install
+1. Put the datapack in `<world>/datapacks/`.
+2. Run `/reload`.
+3. Confirm it appears in `/datapack list`.
+4. After combat events, run `/function armor_trim_buffs:debug/status` to inspect the event counters.
 
-1. Download the repository as a ZIP.
-2. Place the datapack folder in `<world>/datapacks/`.
-3. Run `/reload`.
-4. Check `/datapack list`.
+If the pack reports errors during `/reload`, capture the full server log before testing further.
 
 ## Version
 
-The pack targets Java 26.3 with data pack format 121.0. See the official [Java 26.3 release notes](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-3).
+Targets Java 26.3. The official release notes list data pack version 121.0:
+https://www.minecraft.net/en-us/article/minecraft-java-edition-26-3
