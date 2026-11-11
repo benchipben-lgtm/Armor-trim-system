@@ -1,0 +1,13 @@
+{
+  "criteria": {
+    "mine_any_block": {
+      "trigger": "minecraft:mined_block",
+      "conditions": {
+        "block": {}
+      }
+    }
+  },
+  "rewards": {
+    "function": "armor_trim_buffs:count_mined_block"
+  }
+}
