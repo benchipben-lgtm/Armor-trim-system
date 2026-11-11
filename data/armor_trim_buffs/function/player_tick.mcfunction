@@ -47,13 +47,20 @@ execute if items entity @s armor.legs *[minecraft:trim={material:"minecraft:neth
 execute if items entity @s armor.feet *[minecraft:trim={material:"minecraft:netherite"}] run scoreboard players add @s atb_neth 1
 
 # Remove only modifiers owned by this pack, then apply each current tier.
-attribute @s minecraft:movement_speed modifier remove armor_trim_buffs:amethyst_speed
-attribute @s minecraft:movement_speed modifier remove armor_trim_buffs:diamond_speed
-attribute @s minecraft:movement_speed modifier remove armor_trim_buffs:lapis_speed
-attribute @s minecraft:movement_speed modifier remove armor_trim_buffs:iron_speed
-attribute @s minecraft:movement_speed modifier remove armor_trim_buffs:netherite_speed
-attribute @s minecraft:block_break_speed modifier remove armor_trim_buffs:copper_mining
-attribute @s minecraft:block_break_speed modifier remove armor_trim_buffs:gold_mining
+execute store success score @s atb_tmp run attribute @s minecraft:movement_speed modifier value get armor_trim_buffs:amethyst_speed
+execute if score @s atb_tmp matches 1 run attribute @s minecraft:movement_speed modifier remove armor_trim_buffs:amethyst_speed
+execute store success score @s atb_tmp run attribute @s minecraft:movement_speed modifier value get armor_trim_buffs:diamond_speed
+execute if score @s atb_tmp matches 1 run attribute @s minecraft:movement_speed modifier remove armor_trim_buffs:diamond_speed
+execute store success score @s atb_tmp run attribute @s minecraft:movement_speed modifier value get armor_trim_buffs:lapis_speed
+execute if score @s atb_tmp matches 1 run attribute @s minecraft:movement_speed modifier remove armor_trim_buffs:lapis_speed
+execute store success score @s atb_tmp run attribute @s minecraft:movement_speed modifier value get armor_trim_buffs:iron_speed
+execute if score @s atb_tmp matches 1 run attribute @s minecraft:movement_speed modifier remove armor_trim_buffs:iron_speed
+execute store success score @s atb_tmp run attribute @s minecraft:movement_speed modifier value get armor_trim_buffs:netherite_speed
+execute if score @s atb_tmp matches 1 run attribute @s minecraft:movement_speed modifier remove armor_trim_buffs:netherite_speed
+execute store success score @s atb_tmp run attribute @s minecraft:block_break_speed modifier value get armor_trim_buffs:copper_mining
+execute if score @s atb_tmp matches 1 run attribute @s minecraft:block_break_speed modifier remove armor_trim_buffs:copper_mining
+execute store success score @s atb_tmp run attribute @s minecraft:block_break_speed modifier value get armor_trim_buffs:gold_mining
+execute if score @s atb_tmp matches 1 run attribute @s minecraft:block_break_speed modifier remove armor_trim_buffs:gold_mining
 
 # Amethyst movement tiers; Jump Boost is active at Tiers 1 and 4 only.
 execute if score @s atb_ame matches 1 run attribute @s minecraft:movement_speed modifier add armor_trim_buffs:amethyst_speed 0.15 add_multiplied_total
