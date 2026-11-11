@@ -106,3 +106,7 @@ execute if score @s atb_gold matches 1 run attribute @s minecraft:block_break_sp
 execute if score @s atb_gold matches 2 run attribute @s minecraft:block_break_speed modifier add armor_trim_buffs:gold_mining 0.25 add_multiplied_total
 execute if score @s atb_gold matches 3 run attribute @s minecraft:block_break_speed modifier add armor_trim_buffs:gold_mining 0.35 add_multiplied_total
 execute if score @s atb_gold matches 4 run attribute @s minecraft:block_break_speed modifier add armor_trim_buffs:gold_mining 0.55 add_multiplied_total
+
+
+# Per-player readout: number of equipped pieces for each trim material (0-4).
+title @s actionbar {"text":"Trim tiers  A:","color":"gold","extra":[{"score":{"name":"@s","objective":"atb_ame"}},{"text":"  D:"},{"score":{"name":"@s","objective":"atb_dia"}},{"text":"  L:"},{"score":{"name":"@s","objective":"atb_lap"}},{"text":"  I:"},{"score":{"name":"@s","objective":"atb_iro"}},{"text":"  C:"},{"score":{"name":"@s","objective":"atb_cop"}},{"text":"  G:"},{"score":{"name":"@s","objective":"atb_gold"}},{"text":"  E:"},{"score":{"name":"@s","objective":"atb_emerald"}},{"text":"  R:"},{"score":{"name":"@s","objective":"atb_red"}},{"text":"  N:"},{"score":{"name":"@s","objective":"atb_neth"}}]}
