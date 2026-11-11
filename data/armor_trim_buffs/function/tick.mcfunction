@@ -1,7 +1,6 @@
 # Ensure all online players always have a visible row in each statistic.
 execute as @a unless score @s atb_deaths matches -2147483648..2147483647 run scoreboard players set @s atb_deaths 0
 execute as @a unless score @s atb_pkills matches -2147483648..2147483647 run scoreboard players set @s atb_pkills 0
-execute as @a unless score @s atb_mined matches -2147483648..2147483647 run scoreboard players set @s atb_mined 0
 execute as @a unless score @s atb_chests matches -2147483648..2147483647 run scoreboard players set @s atb_chests 0
 
 # Update each player's private armor-trim piece-count action bar.
