@@ -40,3 +40,21 @@ This is an **in-progress beta**, not a finished or in-game-verified release. The
 4. Check /datapack list and the server log for errors.
 
 Pack metadata targets Java 26.3 with data pack format 121.0.
+
+## Multiplayer server sidebar and player readout
+
+The server sidebar rotates every five seconds through four per-player statistics:
+- Deaths
+- Players killed
+- Blocks mined
+- Chests opened (the vanilla `open_chest` statistic)
+
+Each player also gets a personal action-bar readout showing their equipped trim-piece counts (A/D/L/I/C/G/E/R/N, from 0 to 4). The tier counts map to the trim effects above.
+
+A vanilla scoreboard sidebar can display only one objective at a time, and the sidebar is shared by everyone online. Therefore the statistics rotate globally, while the action-bar trim readout is individual to each player. This avoids showing one player's armor buffs to everyone else.
+
+The blocks-mined counter uses a repeatable `minecraft:mined_block` advancement trigger that increments a custom score and revokes itself after each qualifying block break. This still needs in-game verification on a Java 26.3 server.
+
+## Server testing status
+
+The multiplayer scoreboard, advancement-based block counter, and action-bar readout have been committed but have **not** been tested in a live server. Test with two players, mine several different block types, open chests, record deaths/player kills, and change armor trims to verify updates.
